@@ -15,4 +15,6 @@ To use this solution, you should——
 5. when finished, import it to your GUI client
 6. try it!
 
+# Limitation
 
+- It only works for containers in a given network

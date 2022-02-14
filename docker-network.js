@@ -8,7 +8,7 @@ const CONTAINER_NAME = "seiun-sky"
 const VOLUME_NAME = "ovpn-data"
 // host can access containers in this network via IP
 // you can use the network you created or the default "bridge" network, whose subnet is "172.16.0.0/16"
-const NETWORK = "bridge"
+const NETWORK = "my_network"
 
 // ---------------------------
 // ---------- logic ----------
@@ -58,7 +58,7 @@ function create() {
 
     log("Initializing vpn config ...")
     // -b
-    tryExec(`docker run -v ${VOLUME_NAME}:/etc/openvpn --rm ${OPENVPN_IMAGE} ovpn_genconfig -N -u udp://localhost`)
+    tryExec(`docker run -v ${VOLUME_NAME}:/etc/openvpn --rm ${OPENVPN_IMAGE} ovpn_genconfig -b -u udp://localhost`)
     // -p 172.16.0.0 255.240.0.0
 
     log("Creating CA (may take sometime) ...")
