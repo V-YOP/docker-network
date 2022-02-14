@@ -7,7 +7,7 @@ To use this solution, you should——
 
 0. install Nodejs v14.16.0 or later
   This program is written in javascript and need nodejs runtime environment.
-1. Install [Tunnelblick](https://tunnelblick.net/downloads.html) for Mac OS X User or [OpenVPN GUI for windows](https://openvpn.net/community-downloads/)
+1. Install [Tunnelblick](https://tunnelblick.net/downloads.html) for Mac OS X or [OpenVPN GUI](https://openvpn.net/community-downloads/) for Windows
 2. create a network (optional)
   A network is needed for you to access container within it, but you can use the default bridge network, you can use `docker network create` command to create it, e.g. `docker network create --subnet 172.19.0.0/16 my_network`.
 3. edit `docker-network.js` and change the configuration as your need.
