@@ -1,4 +1,3 @@
-#! /usr/bin/env node
 // ----------------------------
 // ---------- config ----------
 // ----------------------------
@@ -16,7 +15,7 @@ const NETWORK = "my_network"
 const { spawnSync } = require("child_process")
 const [, , command, ...args] = process.argv
 const { writeFileSync } = require("fs")
-const { resolve } = require("path")
+const { resolve, basename } = require("path")
 precondition()
 switch (command) {
     case 'create':
@@ -89,18 +88,18 @@ function create() {
     Done!
     Now you can see the ovpn file ${configurationFile}.
     For Windows user, you can use "OpenVPN GUI for Windows" to import this file.
-    Mac OS X user should run command 'open ${configurationFile}' and Tunnelblick would import it.
+    Mac OS X user should run command 'open ./${basename(configurationFile)}' and Tunnelblick would import it.
     `.split("\n").map(str => str.trim()).join("\n"))
 }
 
 function destroy() {
      // check if container named ${CONTAINER_NAME} exist
-    if (!exec(`docker inspect ${CONTAINER_NAME}`).status === 0) 
+    if (exec(`docker inspect ${CONTAINER_NAME}`).status !== 0) 
         panic(`It seems one container named ${CONTAINER_NAME} already exists! do nothing`)
     log(`removing existing container ${CONTAINER_NAME} ...`)
     exec(`docker volume rm -f ${VOLUME_NAME}`)
     exec(`docker container rm -f ${CONTAINER_NAME}`)
-    note(`Done`)
+    note(`Done!`)
 }
 
 /**
