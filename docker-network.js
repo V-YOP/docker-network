@@ -3,7 +3,7 @@
 // ----------------------------
 
 const OPENVPN_IMAGE = "kylemanna/openvpn"
-const CONTAINER_NAME = "oguri_cap"
+const CONTAINER_NAME = "haru_urara"
 const VOLUME_NAME = "ovpn-data"
 // host can access containers in this network via IP
 // you can use the network you created or the default "bridge" network, whose subnet is "172.16.0.0/16"
