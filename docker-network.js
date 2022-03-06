@@ -3,7 +3,7 @@
 // ----------------------------
 
 const OPENVPN_IMAGE = "kylemanna/openvpn"
-const CONTAINER_NAME = "haru_urara"
+const CONTAINER_NAME = "amami_haruka"
 const VOLUME_NAME = "ovpn-data"
 // host can access containers in this network via IP
 // you can use the network you created or the default "bridge" network, whose subnet is "172.16.0.0/16"
@@ -48,7 +48,7 @@ function create() {
 
     // check if the network exist
     if (!getNetworkIdByName(NETWORK)) {
-        panic(`No such network: ${networkName}`)
+        panic(`No such network: ${NETWORK}`)
     }
 
     log("Creating docker volume ...")
@@ -95,7 +95,7 @@ function create() {
 function destroy() {
      // check if container named ${CONTAINER_NAME} exist
     if (exec(`docker inspect ${CONTAINER_NAME}`).status !== 0) 
-        panic(`It seems one container named ${CONTAINER_NAME} already exists! do nothing`)
+        panic(`It seems one container named ${CONTAINER_NAME} does not exist! do nothing`)
     log(`removing existing container ${CONTAINER_NAME} ...`)
     exec(`docker volume rm -f ${VOLUME_NAME}`)
     exec(`docker container rm -f ${CONTAINER_NAME}`)
