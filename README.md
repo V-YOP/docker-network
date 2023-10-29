@@ -23,6 +23,14 @@ To use this solution, you should——
   $ curl 172.19.100.100
   ```
 
+If OpenVPN cannot connect and logs such error like "OPTIONS ERROR: server pushed compression settings that are not allowed and will result in a non-working connection. See also allow-compression in the manual.", add texts below to configuration file then reconnect:
+
+```
+comp-lzo yes
+allow-compression yes
+```
+
+
 # Limitation
 
 - It only works for containers in one given network
